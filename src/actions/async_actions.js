@@ -5,17 +5,17 @@ export const RECEIVE_ARRIVALS = 'RECEIVE_ARRIVALS';
 
 var api = require('./api');
 
-export const requestStops = () => {
+export function requestStops(){
   return {
     type:REQUEST_STOPS
-  }
+  };
 }
 
-export const receiveStops = (data) => {
+export function receiveStops(data){
   return {
     type:RECEIVE_STOPS,
     data
-  }
+  };
 }
 
 export const fetchStops = () => {

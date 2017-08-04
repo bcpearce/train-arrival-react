@@ -1,6 +1,6 @@
 var axios = require('axios');
 var api = axios.create({
-  baseURL: "http://192.168.1.95:5000"
+  baseURL: (process.env.NODE_ENV === 'test') ? "/" : "http://192.168.1.95:5000"
 });
 
 module.exports =
@@ -11,5 +11,7 @@ module.exports =
 
   getArrivals: (stopId) => {
     return api.get(`/stop/${stopId}`);
-  }
+  },
+
+  api
 }

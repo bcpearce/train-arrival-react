@@ -20,6 +20,7 @@ export function receiveStops(data){
 
 export const fetchStops = () => {
   return dispatch => {
+    dispatch(requestStops());
     return api.getStops()
       .then(response => response.data)
       .then(data => dispatch(receiveStops(data)))

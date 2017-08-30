@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchStops } from '../actions/async_actions';
+import { fetchStops, fetchArrivals } from '../actions/async_actions';
 
 export class StopSelector extends Component {
 
-  componentWillMount() {
+  componentWillMount =() => {
     this.props.dispatch(fetchStops())
   }
 
-  handleSelect(e) {
-    this.props.dispatch(e.target.value);
+  handleSelect = (e) => {
+    this.props.dispatch(fetchArrivals(e.target.value + "N"));
+    this.props.dispatch(fetchArrivals(e.target.value + "S"));
   }
 
   renderStopOption(stop) {
@@ -28,8 +29,9 @@ export class StopSelector extends Component {
   render() {
     const stops = Object.values(this.props.stops).map(this.renderStopOption);
     return(
-      <div>
-        <select>
+      <div className="StopSelector">
+        <select onChange={this.handleSelect}>
+          <option className="default-selection">Select a Station</option>
           {stops}
         </select>
       </div>

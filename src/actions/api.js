@@ -1,7 +1,9 @@
 var axios = require('axios');
 var api = axios.create({
-  baseURL: (process.env.NODE_ENV === 'test') ? "/" : "http://192.168.1.95:5000"
+  baseURL: (process.env.NODE_ENV === 'test') ? "/" : process.env.REACT_APP_API_SERVER
 });
+
+console.log(process.env)
 
 module.exports =
 {

@@ -67,6 +67,6 @@ describe('async_actions', () => {
     return store.dispatch(async_actions.fetchStops()).then(() => {
       expect(store.getActions()).toEqual(expectedActions)
     })
-  })
+  });
 
 });

@@ -9,8 +9,8 @@ class App extends Component {
       <div className="App">
         <StopSelector />
         <div className="stop-arrivals">
-          <Arrivals direction="northbound" />
-          <Arrivals direction="southbound" />
+          <Arrivals direction="northbound" limit="4" />
+          <Arrivals direction="southbound" limit="4" />
         </div>
       </div>
     );

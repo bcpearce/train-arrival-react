@@ -44,15 +44,6 @@ div.arrival {
   width: 240px;
 }
 
-.arrivals-northbound {
-  float: left;
-  margin-right: 5px;
-}
-
-.arrivals-southbound {
-
-}
-
 h2.direction {
   text-transform: capitalize;
 }

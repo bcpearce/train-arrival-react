@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { sortBy } from 'underscore';
 
 export class Arrivals extends Component {
 
@@ -8,6 +9,7 @@ export class Arrivals extends Component {
   }
 
   renderArrival(arrival, index) {
+    const minutes_till_arrival = Math.round(parseFloat(arrival.time)/60.0);
     return (
       <div className="arrival" key={index}>
         <span className="arrival-line">
@@ -15,15 +17,15 @@ export class Arrivals extends Component {
             src={process.env.REACT_APP_API_SERVER + `/bullet/${arrival.route}`}
             alt={`(${arrival.route})`}
             className="bullet">
-          </img>  {Math.round(parseFloat(arrival.time)/60.0)} Minutes Away
+          </img>  {minutes_till_arrival > 0 ? minutes_till_arrival : 0} Minutes Away
         </span>
       </div>
     )
   }
 
   render() {
-    const arrivals = Object.values(this.props.arrivals)
-      .slice(0, this.props.limit)
+    const arrivals = sortBy(Object.values(this.props.arrivals)
+      .slice(0, this.props.limit), 'time')
       .map((arrival, index) => 
         this.renderArrival(arrival, index));
     
@@ -37,7 +39,6 @@ export class Arrivals extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state.arrivals)
   return {
     arrivals:state.arrivals[ownProps.direction],
     direction:ownProps.direction,

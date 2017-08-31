@@ -1,9 +1,10 @@
 .App {
-  text-align: center;
+  margin-left:auto;
+  margin-right:auto;
 }
 
-.stop-selection {
-  width: 440px;
+.stop-selector {
+  width: 480px;
   margin-left:auto;
   margin-right:auto;
 }

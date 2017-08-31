@@ -29,7 +29,7 @@ export class StopSelector extends Component {
   render() {
     const stops = Object.values(this.props.stops).map(this.renderStopOption);
     return(
-      <div className="StopSelector">
+      <div className="stop-selector">
         <select onChange={this.handleSelect}>
           <option className="default-selection">Select a Station</option>
           {stops}

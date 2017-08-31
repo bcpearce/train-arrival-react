@@ -24,8 +24,8 @@ export class Arrivals extends Component {
   }
 
   render() {
-    const arrivals = sortBy(Object.values(this.props.arrivals)
-      .slice(0, this.props.limit), 'time')
+    const arrivals = sortBy(Object.values(this.props.arrivals), 'time')
+      .slice(0, this.props.limit)
       .map((arrival, index) => 
         this.renderArrival(arrival, index));
     

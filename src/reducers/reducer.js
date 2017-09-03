@@ -20,7 +20,6 @@ const stops = (state={isFetching:false, items:[]}, action) => {
 }
 
 const activeStop = (state=null, action) => {
-  console.log(action);
   switch(action.type) {
     case SET_STOP_ID:
       return action.stopId

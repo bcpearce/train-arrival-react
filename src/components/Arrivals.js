@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { sortBy } from 'underscore';
+import { fetchArrivals } from '../actions/async_actions';
 
 export class Arrivals extends Component {
 
-  componentWillMount() {
-    //this.props.dispatch(fetchArrivals())
+  componentDidMount() {
+    this.interval = setInterval(() => {
+      if(this.props.parentStopId != null) this.props.dispatch(fetchArrivals(this.props.stopId));
+    }, this.props.refreshRate*1000)
   }
 
   renderArrival(arrival, index) {
@@ -39,10 +42,14 @@ export class Arrivals extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
+  console.log(state.activeStop);
   return {
     arrivals:state.arrivals[ownProps.direction],
     direction:ownProps.direction,
     limit:ownProps.limit,
+    parentStopId:state.activeStop,
+    stopId:state.activeStop + (ownProps.direction === 'northbound' ? 'N' : 'S'),
+    refreshRate:ownProps.refreshRate || 60,
   }
 }
 

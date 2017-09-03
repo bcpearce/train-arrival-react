@@ -5,6 +5,7 @@ import {
   REQUEST_STOPS,
   RECEIVE_ARRIVALS,
   REQUEST_ARRIVALS, 
+  SET_STOP_ID,
 } from '../actions/async_actions';
 
 const stops = (state={isFetching:false, items:[]}, action) => {
@@ -15,6 +16,16 @@ const stops = (state={isFetching:false, items:[]}, action) => {
       return {isFetching:false, items:action.data}
     default:
       return state;
+  }
+}
+
+const activeStop = (state=null, action) => {
+  console.log(action);
+  switch(action.type) {
+    case SET_STOP_ID:
+      return action.stopId
+    default:
+      return state
   }
 }
 
@@ -46,7 +57,7 @@ const arrivals = (state={isFetching:false, northbound:[], southbound:[]}, action
 }
 
 const reducer = combineReducers({
-  stops, arrivals
+  stops, activeStop, arrivals
 })
 
 export default reducer;

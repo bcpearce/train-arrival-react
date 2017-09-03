@@ -2,6 +2,7 @@ export const REQUEST_STOPS = 'REQUEST_STOPS';
 export const RECEIVE_STOPS = 'RECEIVE_STOPS';
 export const REQUEST_ARRIVALS = 'REQUEST_ARRIVALS';
 export const RECEIVE_ARRIVALS = 'RECEIVE_ARRIVALS';
+export const SET_STOP_ID = 'SET_STOP_ID';
 
 var api = require('./api');
 
@@ -30,6 +31,12 @@ export const fetchStops = () => {
 }
 
 //Requesting Arrival Info
+export function setStopId(stopId) {
+  return {
+    type:SET_STOP_ID,
+    stopId
+  }
+}
 export function requestArrivals(){
   return {
     type:REQUEST_ARRIVALS

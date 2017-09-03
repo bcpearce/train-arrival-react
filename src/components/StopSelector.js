@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchStops, fetchArrivals } from '../actions/async_actions';
+import { fetchStops, fetchArrivals, setStopId } from '../actions/async_actions';
 
 export class StopSelector extends Component {
 
@@ -9,6 +9,7 @@ export class StopSelector extends Component {
   }
 
   handleSelect = (e) => {
+    this.props.dispatch(setStopId(e.target.value));
     this.props.dispatch(fetchArrivals(e.target.value + "N"));
     this.props.dispatch(fetchArrivals(e.target.value + "S"));
   }
